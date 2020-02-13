@@ -22,7 +22,9 @@ const GoalInput = props => {
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder="Coarse Goal"
+          placeholder="Enter Goal"
+          placeholderTextColor="#999"
+          multiline={true}
           style={styles.input}
           onChangeText={goalInputHandler}
           value={enteredGoal}
@@ -48,8 +50,10 @@ const styles = StyleSheet.create({
   },
   input: {
     borderColor: 'black',
+    color: 'black',
     borderWidth: 1,
-    padding: 10,
+    padding: 8,
+
     width: '80%',
     marginBottom: 10
   },
