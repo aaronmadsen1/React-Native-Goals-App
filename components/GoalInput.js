@@ -8,6 +8,16 @@ const GoalInput = props => {
     setEnteredGoal(enteredText)
   }
 
+  const addGoalHandler = () => {
+    props.onAddGoal(enteredGoal)
+    setEnteredGoal('')
+  }
+
+  const cancelGoalAddHandler = () => {
+    props.onCancel(false)
+    setEnteredGoal('')
+  }
+
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
@@ -17,7 +27,14 @@ const GoalInput = props => {
           onChangeText={goalInputHandler}
           value={enteredGoal}
         />
-        <Button title="ADD" onPress={props.onAddGoal.bind(this, enteredGoal)} />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="ADD" color="green" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="CANCEL" color="red" onPress={cancelGoalAddHandler} />
+          </View>
+        </View>
       </View>
     </Modal>
   )
@@ -35,6 +52,14 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '80%',
     marginBottom: 10
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '50%'
+  },
+  button: {
+    width: 80
   }
 })
 
